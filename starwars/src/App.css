@@ -1,11 +1,14 @@
 .App {
+    font-family: Myriad Pro;
     text-align: center;
-    background-image: url('/sw-bg copy.jpg');
-    background-size: cover;
+    color: #092d6d;
+    text-shadow: 1px 1px 5px #fff;
   }
   .Header {
-    color: #443e3e;
+    color: #d17878;
     text-shadow: 1px 1px 5px #fff;
+    font-family: "acme-gothic-extrawide", serif;
+    text-shadow: 32px 0px 12px rgba(201, 198, 241, 0.004);
   }
 
   

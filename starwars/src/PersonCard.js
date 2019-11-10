@@ -1,21 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
+
+
 const Card = styled.div`
     font-size: 29px;
-    font-family: "Arial Rounded MT Bold";
+    font-family: font-family: '', sans-serif;
     color: rgba(209, 208, 253, 0.902);
     line-height: 1.2;
     text-align: center;
     text-shadow: 0px 12px 0px rgba(201, 198, 241, 0.004);
+      
     color: white;
     border-style: solid;
     border-width: 4px;
     border-color: rgb(7, 12, 39);
     border-radius: 10px;
     background-color: rgb(13, 34, 71);
-    opacity: 0.659;
-    box-shadow: 0px 13px 76.44px 7.56px rgba(0, 0, 0, 0.78), inset 0 15px 20px, hex(#c9c6f1);
+    opacity: 0.77;
+    box-shadow: 0px 13px 76.44px 7.56px rgba(0, 0, 0, 0.78);
     height: 450px;
     border-color: solid 4px rgb(7, 12, 39);
     overflow: hidden;
@@ -26,11 +29,10 @@ const Card = styled.div`
     opacity: 0.8;
 `;
 
-
-  
+    
 
 const Name = styled.h2`
-    font-family: 'Cinzel', serif;
+    font-family: 'arial-rounded-mt-bold', serif;
     font-size: 1.7rem;
 `;
 

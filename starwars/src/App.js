@@ -6,27 +6,23 @@ import PersonCard from "./PersonCard";
 //import Search from "./components/Search";
 
 
+
+
 const Header = styled.h1`
-  text-shadow: 5px 5px 50px #fff;
+  text-shadow: 11px 0px 12px rgba(201, 198, 241, 0.004);
+  font-family: 'acme-gothic-extrawide', serif;
+  font-weight: 800;
   font-size: 5rem;
-  font-family: 'ZCOOL XiaoWei', serif;
   margin: 2% 0 2%;
   text-transform: uppercase;
   letter-spacing: 4px;
   overflow: hidden;
   background-repeat: no-repeat;
-  background-size: 80%;
-  animation: animate 20s linear infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0);
-  }
-  @keyframes animate {
-  0% {
-    background-position: -500%;
-  }
-  100% {
-    background-position: 500%;
-  }
+  
+  -webkit-filter: drop-shadow(9px 5px 5px #222);
+  -webkit-background-image: text;
+  -webkit-text-fill-color: 2821f2;
+  
 `;
 
 const PersonContainer = styled.div`
@@ -34,6 +30,11 @@ const PersonContainer = styled.div`
   display: grid;
   grid-gap: 125px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+`;
+
+const Info = styled.div`
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
 `;
 
 
@@ -87,9 +88,7 @@ const App = () => {
         />
       <PersonContainer> 
         {filterPeople.map((char, index) => {
-          { /* for (var item in char){
-          let itemStr = char[item] + ""; */}
-            { /*if(itemStr.toLowerCase().includes(search.toLowerCase())) { */}
+          
               return (
                 <PersonCard
                   key={index}
