@@ -41,11 +41,25 @@ const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
-  const [person, setPerson] = useState([]);
-  const [search, setSearch] = useState("");
+  const [people, setPeople] = useState([]);
+  const [filterPeople, setFilterPeople] = useState([])
+  const [text, setText] = useState("");
 
-  const handleChange = event => {
-    setSearch(event.target.value)
+  const handlefilter = event => {
+    const newText = event.target.value;
+    setText(newText);
+    if (newText) {
+      const result = people.filter(person => {
+        const first = person.name.toLowerCase();
+        const second = newText.toLowerCase();
+        console.log(first, " ", second);
+        return first.search(second) > -1;
+      });
+
+      setFilterPeople(result.length ? result : people);
+    } else {
+      setFilterPeople(people);
+    }
   }
 
   // Fetch characters from the star wars api in an effect hook. Remember, anytime you have a 
@@ -54,7 +68,8 @@ const App = () => {
 
   useEffect(() => {
     axios.get("https://swapi.co/api/people/").then((response) => {
-      setPerson(response.data.results);
+      setPeople(response.data.results);
+      setFilterPeople(response.data.results);
       //console.log(response.data.results);
     }).catch((error) => {
       console.log("The data was not returned.", error);
@@ -65,18 +80,16 @@ const App = () => {
     
     <div className="App">
        <Header>React Wars</Header>
-     <input
-        type="text"
-        placeholder="Search"
-        value={search}
-        onChange={handleChange}
-      />
-      <PersonContainer>
-        {person.map((char, index) => {
-          console.log(char);
-          for (var item in char){
-            let itemStr = char[item] + "";
-            if(itemStr.toLowerCase().includes(search.toLowerCase())){
+        <input 
+          value = {text}
+          onChange = {handlefilter}
+          placeholder = "Search"
+        />
+      <PersonContainer> 
+        {filterPeople.map((char, index) => {
+          { /* for (var item in char){
+          let itemStr = char[item] + ""; */}
+            { /*if(itemStr.toLowerCase().includes(search.toLowerCase())) { */}
               return (
                 <PersonCard
                   key={index}
@@ -94,28 +107,6 @@ const App = () => {
                   vehicles={char.vehicles}
                   films={char.films}
                 />)
-              
-            }else if (search === ""){
-              return (
-                <PersonCard
-                  key={index}
-                  name={char.name}
-                  species={char.species}
-                  gender={char.gender}
-                  homeworld={char.homeworld}
-                  birthYear={char.birth_year}
-                  height={char.height}
-                  mass={char.mass}
-                  hairColor={char.hair_color}
-                  eyeColor={char.eye_color}
-                  skinColor={char.skin_color}
-                  starships={char.starships}
-                  vehicles={char.vehicles}
-                  films={char.films}
-                />)
-            }
-          }             
-          return null;
         })}
       </PersonContainer>
     </div>
